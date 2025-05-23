@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
- 
+
 #define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 #define cinv(v) for(auto &i: v) {cin>>i;}
 #define cins(s,n) for(int i=0; i<n; i++) {int k; cin>>k; s.insert(k);}
@@ -9,8 +9,8 @@ using namespace std;
 #define coutm(m) for(auto &it: m) {cout<<it.first<<": "<<it.second<<endl;}
 #define all(v) v.begin(),v.end()
 #define rall(v) v.rbegin(),v.rend()
-#define copyto(c,v) for(int i = 0; i<v.size(); i++) c.push_back(v[i])
 #define forin(i, j, n) for(int i = j; i < n; i++)
+#define forikn(i,j,n,k) for(int i = j; i < n; i+=k)
 #define forn(i, n) for(int i = 0; i < n; i++)
 #define ford(i,n) for(int i = n-1; i >= 0; i--)
 #define forit(i, v) for(typeof((v).begin()) i = (v).begin(); i != (v).end(); ++i)
@@ -35,23 +35,32 @@ const int N=2*1e5+3;
 const int mod=1e9+7;
 const int mod1=998244353;
 double eps=1e-5;
- 
-void solve() {
-    int n;
-    cin>>n;
- 
-    int k = 5, sum=0;
-    while(k<=n) {
-        sum+=n/k;
-        k*=5;
-    }
-    cout<<sum<<endl;
 
-}e
- 
+int cl2(int x){
+    if(x <= 1) return 0;
+    return 64 - __builtin_clzll(x - 1);
+}
+
+
+void solve() {
+    int n,m,a,b;
+    cin>>n>>m>>a>>b;
+    int da = min(a, n - a + 1);
+    int db = min(b, m - b + 1);
+    int ch = 1 + cl2(m) + cl2(da);
+    int cv = 1 + cl2(n) + cl2(db);
+    cout << min(ch, cv) << '\n';
+
+}
+
 signed main() {
- 
     fast;
-    solve();
+    int t;
+    cin>>t;
+    while(t--) {
+
+        solve();
+
+    }
     return 0;
 }

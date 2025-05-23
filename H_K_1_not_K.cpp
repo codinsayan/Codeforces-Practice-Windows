@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
- 
+
 #define fast ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
 #define cinv(v) for(auto &i: v) {cin>>i;}
 #define cins(s,n) for(int i=0; i<n; i++) {int k; cin>>k; s.insert(k);}
@@ -35,23 +35,32 @@ const int N=2*1e5+3;
 const int mod=1e9+7;
 const int mod1=998244353;
 double eps=1e-5;
- 
-void solve() {
-    int n;
-    cin>>n;
- 
-    int k = 5, sum=0;
-    while(k<=n) {
-        sum+=n/k;
-        k*=5;
-    }
-    cout<<sum<<endl;
 
-}e
- 
+void solve() {
+    int n,k;
+    cin>>n>>k;
+
+    vn v(2*n-2);
+
+    forin(i,1,v.size()+1) {
+        if(i%(n-1)==0) v[i-1] = (n-1)+1;
+        else v[i-1] = i%(n-1)+1;
+    }
+
+    v.insert(v.begin(),1);
+    v.insert(v.begin()+k,1);
+
+    coutv(v);
+    
+}
+
 signed main() {
- 
-    fast;
-    solve();
+    int t;
+    cin>>t;
+    while(t--) {
+
+        solve();
+
+    }
     return 0;
 }

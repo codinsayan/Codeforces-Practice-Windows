@@ -36,11 +36,37 @@ const int mod=1e9+7;
 const int mod1=998244353;
 double eps=1e-5;
 
-void solve() {
-    int n;
-    cin>>n;
+//Always Use Precomputation in global scope, otherwise compensate with a TLE
 
-    if(n<=4) cout<<"Yes"<<endl;
+vector<int> prime(N + 1, 1);
+void SieveOfEratosthenes() {
+
+    //It gives vector of prime no.s till N
+
+    for (int p = 2; p*p <= N; p++) {
+        if (prime[p] == true) {
+            for (int i = p*p; i <= N; i += p)
+                prime[i] = false;
+            }
+    }
+    prime[0] = prime[1] = 0;
+}
+
+bool compareint(int &a, int &b) {
+    //give condition in the way you want the sorting to work
+    return a>b;
+}
+
+bool comparepair(pair<int,int> &a, pair<int,int> &b) {
+    //give condition in the way you want the sorting to work
+    if(a.ff == b.ff) {
+        return a.ss > b.ss;
+    }
+    return a<b;
+}
+
+void solve() {
+coutv(prime);
 
     
 
@@ -50,6 +76,9 @@ signed main() {
     fast;
     int t;
     cin>>t;
+
+    SieveOfEratosthenes();
+
     while(t--) {
 
         solve();
